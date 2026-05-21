@@ -35,7 +35,7 @@ shell:
 	docker compose exec app uv run python
 
 db-shell:
-	docker compose exec postgres psql -U $${POSTGRES_USER} -d $${POSTGRES_DB}
+	docker compose exec postgres sh -lc 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"'
 
 seed:
 	docker compose exec app uv run python scripts/seed.py
