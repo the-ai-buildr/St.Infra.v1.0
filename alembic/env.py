@@ -10,14 +10,15 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-from app.db.base import Base  # noqa: E402 — must come after fileConfig
+import app.models  # noqa: E402, F401
+from app.db.base import Base  # noqa: E402
 
 target_metadata = Base.metadata
 
 
 def get_url() -> str:
     try:
-        from app.config import settings
+        from app.config.settings import settings
 
         url = settings.DATABASE_URL
     except Exception:
