@@ -31,11 +31,10 @@ ENV/
 env.bak/
 venv.bak/
 
-# Streamlit
-.streamlit/
+# Streamlit (only ignore secrets, not config)
+.streamlit/secrets.toml
 
 # Docker
-.dockerignore
 docker-compose.override.yml
 
 # IDEs
@@ -58,3 +57,10 @@ coverage.xml
 
 # Ruff
 .ruff_cache/
+
+# Terraform
+terraform/*.tfvars
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl

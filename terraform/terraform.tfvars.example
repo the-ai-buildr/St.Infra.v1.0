@@ -1,0 +1,7 @@
+project_id      = "your-gcp-project-id"
+region          = "us-central1"
+environment     = "dev"
+image_tag       = "latest"
+db_tier         = "db-f1-micro"
+db_password     = "change_me_strong_password"
+auth_cookie_key = "replace_with_32_byte_hex_string_here"
