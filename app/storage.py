@@ -6,8 +6,15 @@ from app.config import settings
 
 
 def get_bucket() -> storage.Bucket:
+    bucket_name = (settings.GCS_BUCKET_NAME or "").strip()
+    if not bucket_name:
+        raise RuntimeError(
+            "GCS_BUCKET_NAME is not configured. Set app.config.settings.GCS_BUCKET_NAME "
+            "before using Google Cloud Storage operations."
+        )
+
     client = storage.Client(project=settings.GCP_PROJECT_ID or None)
-    return client.bucket(settings.GCS_BUCKET_NAME)
+    return client.bucket(bucket_name)
 
 
 def upload_file(
