@@ -41,7 +41,7 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user/St.Infra.v1.0"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${CLAUDE_FILESYSTEM_ROOT}"]
     }
   }
 }
