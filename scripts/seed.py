@@ -5,7 +5,7 @@ Run via: make seed
 Extend this script as your schema grows.
 """
 
-from app.config import settings
+from app.config.settings import settings
 from app.db.session import get_db
 
 

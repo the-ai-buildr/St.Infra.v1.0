@@ -1,25 +1,36 @@
 import streamlit as st
 
-from app.auth import get_authenticator, require_login
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
-st.set_page_config(
-    page_title="Streamlit App",
-    page_icon=":material/dashboard:",
-    layout="wide",
+landing_page = st.Page("app/views/landing.py", title="Home", icon=":material/home:")
+login_page = st.Page("app/views/auth/login.py", title="Login", icon=":material/login:")
+signup_page = st.Page(
+    "app/views/auth/signup.py", title="Sign Up", icon=":material/person_add:"
+)
+forgot_page = st.Page(
+    "app/views/auth/forgot.py", title="Forgot Password", icon=":material/password:"
 )
 
-name, username = require_login()
+dashboard_page = st.Page(
+    "app/views/dashboard.py", title="Dashboard", icon=":material/dashboard:"
+)
+settings_page = st.Page(
+    "app/views/settings.py", title="Settings", icon=":material/settings:"
+)
+preferences_page = st.Page(
+    "app/views/preferences.py", title="Preferences", icon=":material/palette:"
+)
 
-auth = get_authenticator()
-auth.logout(location="sidebar")
-st.sidebar.write(f"Logged in as **{name}**")
+if (
+    "authentication_status" not in st.session_state
+    or not st.session_state["authentication_status"]
+):
+    pg = st.navigation([landing_page, login_page, signup_page, forgot_page])
+else:
+    pg = st.navigation(
+        {
+            "App": [dashboard_page, settings_page, preferences_page],
+        }
+    )
 
-
-def _home() -> None:
-    st.title("Welcome")
-    st.write(f"Hello, {name}! Add your pages in `app/pages/` and register them below.")
-
-
-home_page = st.Page(_home, title="Home", icon=":material/home:")
-pg = st.navigation([home_page])
 pg.run()
