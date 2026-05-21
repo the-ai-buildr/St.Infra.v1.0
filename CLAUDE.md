@@ -20,7 +20,7 @@ Containerised with Docker Compose locally; deployed to GCP Cloud Run via Terrafo
 ## Key commands
 | Command | What it does |
 |---|---|
-| `make setup` | `uv sync --dev` + pre-commit install |
+| `make setup` | `uv sync --extra dev` + pre-commit install |
 | `make up` | Start Docker stack (background) |
 | `make dev` | Start Docker stack (foreground, live logs) |
 | `make down` | Stop containers |

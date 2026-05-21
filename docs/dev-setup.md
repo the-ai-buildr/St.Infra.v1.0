@@ -24,7 +24,7 @@ cp .env.example .env
 python -c "import secrets; print(secrets.token_hex(32))"
 # Paste the output into .env as AUTH_COOKIE_KEY
 
-make setup    # uv sync --dev + pre-commit install
+make setup    # uv sync --extra dev + pre-commit install
 make up       # docker compose up -d
 make migrate  # alembic upgrade head (runs inside container)
 make seed     # seed dev credentials

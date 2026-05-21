@@ -8,7 +8,7 @@ REPO         = $(GCP_REGION)-docker.pkg.dev/$(GCP_PROJECT_ID)/streamlit-app/app
 
 # ── Setup ─────────────────────────────────────────────────────────────────────
 setup:
-	uv sync --dev
+	uv sync --extra dev
 	uv run pre-commit install
 
 # ── Docker (local) ────────────────────────────────────────────────────────────

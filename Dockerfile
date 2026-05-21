@@ -13,7 +13,7 @@ COPY pyproject.toml uv.lock ./
 # ── dev ───────────────────────────────────────────────────────────────────────
 FROM base AS dev
 
-RUN uv sync --frozen --dev
+RUN uv sync --frozen --extra dev
 RUN uv run pip install "watchdog[watchmedo]" --quiet
 
 COPY . .

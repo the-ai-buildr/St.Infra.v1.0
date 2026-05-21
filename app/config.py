@@ -36,7 +36,9 @@ class Settings(BaseSettings):
         if not self.DATABASE_URL:
             object.__setattr__(self, "DATABASE_URL", f"postgresql+psycopg2://{base}")
         if not self.ASYNC_DATABASE_URL:
-            object.__setattr__(self, "ASYNC_DATABASE_URL", f"postgresql+asyncpg://{base}")
+            object.__setattr__(
+                self, "ASYNC_DATABASE_URL", f"postgresql+asyncpg://{base}"
+            )
 
 
 settings = Settings()
