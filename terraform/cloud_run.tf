@@ -97,10 +97,6 @@ resource "google_cloud_run_v2_service" "app" {
   ]
 }
 
-# Allow unauthenticated public access — remove for IAP-protected apps
-resource "google_cloud_run_v2_service_iam_member" "public" {
-  name     = google_cloud_run_v2_service.app.name
-  location = var.region
-  role     = "roles/run.invoker"
-  member   = "allUsers"
-}
+# Public unauthenticated access is intentionally not granted by default.
+# If a deployment requires anonymous access, add an explicit opt-in IAM
+# binding for `roles/run.invoker` to `allUsers` outside this secure default.
